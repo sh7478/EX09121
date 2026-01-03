@@ -19,11 +19,14 @@ import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
     TextView solution;
+    EditText etNum1, etNum2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         solution = findViewById(R.id.solution);
+        etNum1 = findViewById(R.id.etNum1);
+        etNum2 = findViewById(R.id.etNum2);
     }
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
@@ -34,5 +37,29 @@ public class MainActivity extends AppCompatActivity {
     }@Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         return super.onContextItemSelected(item);
+    }
+    public static Double tryParseDecimal(String str) {
+        if (str == null || str.isEmpty()) {
+            return null;
+        }
+        if (str.matches("[+-]?(\\d+(\\.\\d*)?|\\.\\d+)")) {
+            return Double.parseDouble(str);
+        }
+        return null;
+    }
+
+    public static String formatDecimal(double number) {
+        DecimalFormat simpleFormat = new DecimalFormat("0.####");
+        String formattedSimple = simpleFormat.format(number).replaceAll("[^0-9]", "");
+        if (formattedSimple.length() <= 5) {
+            NumberFormat standardFormat = NumberFormat.getInstance();
+            standardFormat.setMaximumFractionDigits(4);
+            standardFormat.setGroupingUsed(false);
+            return standardFormat.format(number);
+        } else {
+            DecimalFormat scientificFormat = new DecimalFormat("0.00E0");
+            String result = scientificFormat.format(number);
+            return result.replace("E", "e");
+        }
     }
 }
