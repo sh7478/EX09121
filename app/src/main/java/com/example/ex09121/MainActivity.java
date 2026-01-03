@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         solution = findViewById(R.id.solution);
+        solution.setOnCreateContextMenuListener(this);
         etNum1 = findViewById(R.id.etNum1);
         etNum2 = findViewById(R.id.etNum2);
     }
