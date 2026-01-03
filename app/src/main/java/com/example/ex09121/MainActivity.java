@@ -18,9 +18,21 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
+    TextView solution;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        solution = findViewById(R.id.solution);
+    }
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        menu.add("sum");
+        menu.add("sub");
+        menu.add("mul");
+        menu.add("div");
+    }@Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        return super.onContextItemSelected(item);
     }
 }
