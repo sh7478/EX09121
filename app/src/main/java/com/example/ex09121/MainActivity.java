@@ -62,4 +62,34 @@ public class MainActivity extends AppCompatActivity {
             return result.replace("E", "e");
         }
     }
+    private void subNums() {
+        double num1 = Double.parseDouble(etNum1.getText().toString());
+        double num2 = Double.parseDouble(etNum2.getText().toString());
+
+        solution.setText(formatDecimal(num1 - num2));
+    }
+
+    private void sumNums() {
+        double num1 = Double.parseDouble(etNum1.getText().toString());
+        double num2 = Double.parseDouble(etNum2.getText().toString());
+        solution.setText(formatDecimal(num1 + num2));
+
+    }
+    private void divNums() {
+        double num1 = Double.parseDouble(etNum1.getText().toString());
+        double num2 = Double.parseDouble(etNum2.getText().toString());
+        if(num2 == 0)
+        {
+            solution.setText("Can't divide by zero");
+        }
+        else {
+            solution.setText(formatDecimal(num1 / num2));
+        }
+    }
+
+    private void mulNums() {
+        double num1 = Double.parseDouble(etNum1.getText().toString());
+        double num2 = Double.parseDouble(etNum2.getText().toString());
+        solution.setText(formatDecimal((num2*num1)));
+    }
 }
