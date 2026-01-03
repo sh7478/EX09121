@@ -36,6 +36,30 @@ public class MainActivity extends AppCompatActivity {
         menu.add("div");
     }@Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
+        String oper = item.getTitle().toString();
+        if(tryParseDecimal(etNum1.getText().toString()) != null && tryParseDecimal(etNum2.getText().toString()) != null)
+        {
+            if(oper.equals("sum"))
+            {
+                sumNums();
+            }
+            else if(oper.equals("sub"))
+            {
+                subNums();
+            }
+            else if(oper.equals("mul"))
+            {
+                mulNums();
+            }
+            else if(oper.equals("div"))
+            {
+                divNums();
+            }
+        }
+        else
+        {
+            solution.setText("you have to put two numbers before solving");
+        }
         return super.onContextItemSelected(item);
     }
     public static Double tryParseDecimal(String str) {
